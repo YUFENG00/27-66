@@ -134,26 +134,27 @@ padding: 5px;
     	background: #2d7079;
     }
 }
+
+
+/*-------分割------*/
+
+
 /*侧边栏导航 表格*/
 .container {
-	display: flex;
 	margin-left: auto;
 	margin-right: auto;
-	justify-content: space-between;
 	width: 960px;
 	height: auto;
 	overflow: hidden;
 }
-
+/*侧边栏导航*/
 .left-nav {
 	position: relative;
 	left: 0;
 	margin-right: 20px;
-	/*width: 230px;*/
-	flex: 0 1 230px;
+	width: 230px;
 	max-height: fit-content;
 	background: #ccc;
-	/*overflow-y: scroll;*/
 }
 
 .left-nav ul {
@@ -166,7 +167,6 @@ padding: 5px;
 }
 
 .left-nav li { 
-	/*text-align: center;*/
 	list-style: none;
     width:-webkit-fit-content;
     width:-moz-fit-content;
@@ -177,25 +177,19 @@ padding: 5px;
 	margin-left: auto;
 	margin-right: auto;
 }
+/*JS中用来操作的类*/
 .addScroll {
 	height: 400px;
 	overflow-y: scroll;
 }
-
+/*表格部分*/
 .right-content {
-	/*display: flex;*/
-	/*flex: 1 1 auto;*/
     width: auto;
 }
 
-.right-content tr {
-    display: flex;
-    justify-content: space-between;
-}
 #table-head th {
 	height: 50px;
-    width: 180px;
-    flex-shrink: 1;
+    width: 25%;
 	background: #ccc;
 	margin: 1px;
 	text-align: center;
@@ -205,7 +199,7 @@ padding: 5px;
 td {
 	flex-shrink: 1;
     height: 50px;
-    width: 180px;
+    width: 25%;
 	border: 1px solid #ccc;
 	border-collapse: collapse;
 	text-align: center;
@@ -223,6 +217,6 @@ td {
 	background-color:#f2f2f2;
 }
 .fixed{
-position: fixed;
-top: 0;
+    position: fixed;
+    top: 0;
 }
