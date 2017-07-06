@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>二级菜单</title>
+    <style type="text/css">
+*{ margin:0px auto; padding:0px}
+#menu{width:150px; height:300px; position:fixed; left:100px; top:200px}
+.yiji{ width:150px; height:35px; background-color:#63C; border:1px solid white; text-align:center; line-height:35px; vertical-align:middle; color:white; font-weight:bold}
+#erji1{ width:150px; display:none}
+.xiang21{width:150px; height:35px; background-color:#F96; border:1px solid white; text-align:center; line-height:35px; vertical-align:middle; color:white; font-weight:bold}
+#erji2{ width:150px; display:none}
+.xiang22{width:150px; height:35px; background-color:#F96; border:1px solid white; text-align:center; line-height:35px; vertical-align:middle; color:white; font-weight:bold}
+#erji3{ width:150px; display:none}
+.xiang23{width:150px; height:35px; background-color:#F96; border:1px solid white; text-align:center; line-height:35px; vertical-align:middle; color:white; font-weight:bold}
+</style>
+    <script type="text/javascript">
+function showa(d)
+{
+    //找对应的二级菜单
+    var ej = document.getElementById(d);
+    if(ej.style.display=="block")
+    {
+        ej.style.display="none";
+    }
+    else
+    {
+        ej.style.display = "block";
+    }
+}
+</script>
+</head>
+<body>
+<div id="menu">
+    <div class="yiji" onclick="showa('erji1')">
+        首页
+    </div>
+    <div id="erji1">
+        <div class="xiang21">首页1</div>
+        <div class="xiang21">首页2</div>
+        <div class="xiang21">首页3</div>
+    </div>
+    
+    
+    <div class="yiji" onclick="showa('erji2')">
+        产品中心
+    </div>
+    <div id="erji2">
+        <div class="xiang22">产品1</div>
+        <div class="xiang22">产品2</div>
+        <div class="xiang22">产品3</div>
+    </div>
+    
+    <div class="yiji" onclick="showa('erji3')">
+        活动中心
+    </div>
+    <div id="erji3">
+        <div class="xiang23">活动1</div>
+        <div class="xiang23">活动2</div>
+        <div class="xiang23">活动3</div>
+    </div>
+</div>
+</body>
+</html>

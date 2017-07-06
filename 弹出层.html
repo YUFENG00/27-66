@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>弹出层</title>
+	<style type="text/css">
+	#mask {
+        background-color: #000;
+        opacity: 0.5;
+        filter: alpha(opacity=50); 
+        position: absolute; 
+        left: 0;
+        top: 0;
+        z-index: 1000;
+    }	
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+    var oBtn=document.getElementById("alertBtn");
+    oBtn.onclick=function(){
+        opensth();
+        return false;//阻止浏览器默认下一步操作
+    }
+}
+function opensth(){
+    var allWidth=document.body.scrollWidth;
+    var allHeight=document.body.scrollHeight;
+    var seeHeight=document.documentElement.clientHeight
+    var oMask=document.createElement("div");
+        oMask.id="mask";
+        oMask.style.width=allWidth+"px";
+        oMask.style.height=allHeight+"px";
+        document.body.appendChild(oMask);
+    var oalert=document.createElement("div");
+        oalert.id="alertsth";
+        oalert.innerHTML="<div class='sth'><div id='close'>点击关闭</div></div>";
+        document.body.appendChild(oalert);
+    var sthHeight=oalert.offsetHeight;
+    var sthWidth=oalert.offsetWidth;
+        oalert.style.left=(allWidth-sthWidth)/2+"px";
+        oalert.style.top=(seeHeight-sthHeight)/2+"px";
+    var oClose=document.getElementById("close");
+    oClose.onclick=oMask.onclick=function(){
+        document.body.removeChild(oalert);
+        document.body.removeChild(oMask);
+    };
+	</script>
+</head>
+<body>
+
+</body>
+</html>

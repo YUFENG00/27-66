@@ -124,3 +124,80 @@ function preventDefault (event) {
     //兼容IE
     event.returnValue = false;
 }
+
+
+// 二级菜单
+// 事件委托
+/**
+*监听二级菜单区域的点击事件，根据event.target判断点击源
+*根据类名判断是否展开
+*
+*/
+var secondLevelMenu = document.getElementById("secondMenu");
+secondLevelMenu.addEventListener("click", function(e) {
+    if (e.target.parentNode.children[1].className=="second-level-menu") {
+        e.target.parentNode.children[1].className = "show-submenu";
+    }
+    else {
+        e.target.parentNode.children[1].className = "second-level-menu";
+    }
+});
+
+// 弹窗
+//设置一个全局变量，用来记录event.target确定被点击的按钮
+var whichButton;
+/**
+*点击事件触发函数显示弹窗
+*通过参数obj确定显示哪个弹窗
+*通过 {页面高（宽）- 弹窗（高）}/2 + 窗口滚动高（宽）确定弹窗位置
+*弹窗显示时，半透明遮盖同时显示
+*当为删除窗口时，获取td的innerHTML，在弹窗中显示 删除XXX吗？
+*并将屏幕滚动条禁止
+*
+*@param {string} 弹窗id 确定显示哪个弹窗
+*/
+function showWindow(obj) {
+    // 显示弹窗
+    var popupWindow = document.getElementById(obj);
+    popupWindow.classList.remove("second-level-menu");
+    // 计算弹窗位置
+    var allHeight = document.documentElement.clientHeight;
+    var allWidth = document.documentElement.clientWidth;
+    var popupHeight = popupWindow.offsetHeight;
+    var popupWidth = popupWindow.offsetWidth;
+    var changeHeight = document.documentElement.scrollTop;
+    var changeWidth = document.documentElement.scrollLeft;
+
+    popupWindow.style.top = (allHeight - popupHeight)/2 + changeHeight + "px";
+    popupWindow.style.left = (allWidth - popupWidth)/2 + changeWidth + "px";
+    // 显示遮盖
+    var showCover = document.getElementById("cover");
+    showCover.classList.remove("second-level-menu");
+    showCover.style.width = allWidth + "px";
+    showCover.style.height = allHeight + "px"; 
+     // 若为删除弹窗，动态添加文本
+    whichButton = event.target;
+    if (event.target.className == "del") {
+        var delValue = document.getElementById("delValue");
+        var whichRow = whichButton.parentNode.parentNode;
+        delValue.innerHTML = whichRow.children[0].innerHTML;
+    }
+    // 禁止滚动条
+    disableWindowScroll();
+}
+/**
+*点击取消按钮 或者点击确定按钮完成操作后 关闭弹窗
+*
+*@param {string} 弹窗id 确定关闭哪个弹窗
+*/
+function hideWindow(obj) {
+    // 关闭弹窗
+    var popupWindow = document.getElementById(obj);
+    popupWindow.classList.add("second-level-menu");
+    // 关闭遮盖
+    var hideCover = document.getElementById("cover");
+    hideCover.classList.add("second-level-menu");
+    // 使能滚动条
+    enableWindowScroll(); 
+}
+
