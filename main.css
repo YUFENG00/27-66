@@ -14,62 +14,62 @@ header {
 }
 /*导航菜单*/
 #nav,#nav ul {
-list-style: none outside none;
-margin: 0;
-padding: 0;
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
 }
 #nav {
-background: #000;
-clear: both;
-font-size: 16px;
-height: 70px;
-position: relative;
-width: 100%;
+	background: #000;
+	clear: both;
+	font-size: 16px;
+	height: 70px;
+	position: relative;
+	width: 100%;
 }
 #nav ul {
-background-color: #222;
-left: -9999px;
-overflow: hidden;
-position: absolute;
-top: -9999px;
-z-index: 2;
+	background-color: #222;
+	left: -9999px;
+	overflow: hidden;
+	position: absolute;
+	top: -9999px;
+	z-index: 2;
 }
 #nav li {
-background: #000;
-float: right;
-position: relative;
-padding: 20px;
+	background: #000;
+	float: right;
+	position: relative;
+	padding: 20px;
 }
 
 .nav-li-first {
-margin-right: 16.7%;
+	margin-right: 16.7%;
 }
 
 #nav li a {
-color: #fff;
-display: block;
-float: right;
-font-weight: normal;
-height: 30px;
-position: relative;
-text-decoration: none;
+	color: #fff;
+	display: block;
+	float: right;
+	font-weight: normal;
+	height: 30px;
+	position: relative;
+	text-decoration: none;
 }
 #nav li:hover > a {
-color: #00B4FF;
+	color: #00B4FF;
 }
 #nav li:hover, #nav a:focus, #nav a:hover, #nav a:active {
-background: none repeat scroll 0 0 #121212;
-outline: 0 none;
+	background: none repeat scroll 0 0 #121212;
+	outline: 0 none;
 }
 #nav li:hover ul.subs {
-left: 0;
-top: 70px;
-width: 180px;
+	left: 0;
+	top: 70px;
+	width: 180px;
 }
 #nav ul li {
-background: none;
-width: 100%;
-padding: 5px;
+	background: none;
+	width: 100%;
+	padding: 5px;
 }
 
 

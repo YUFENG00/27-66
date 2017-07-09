@@ -135,11 +135,11 @@ function preventDefault (event) {
 */
 var secondLevelMenu = document.getElementById("secondMenu");
 secondLevelMenu.addEventListener("click", function(e) {
-    if (e.target.parentNode.children[1].className=="second-level-menu") {
-        e.target.parentNode.children[1].className = "show-submenu";
+    if (e.target.children[0].className=="second-level-menu") {
+        e.target.children[0].className = "show-submenu";
     }
     else {
-        e.target.parentNode.children[1].className = "second-level-menu";
+        e.target.children[0].className = "second-level-menu";
     }
 });
 

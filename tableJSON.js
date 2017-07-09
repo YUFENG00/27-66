@@ -1,29 +1,51 @@
 // 存储表格内容的JSON数据结构
 var tableContent = {
-	id0: {"name": "name0", "content": "content0", "value": "value0"},
-	id1: {"name": "name1", "content": "content1", "value": "value1"},
-	id2: {"name": "name2", "content": "content2", "value": "value2"},
-	id3: {"name": "name3", "content": "content3", "value": "value3"},
-	id4: {"name": "name4", "content": "content4", "value": "value4"},
-	id5: {"name": "name5", "content": "content5", "value": "value5"},
-	id6: {"name": "name6", "content": "content6", "value": "value6"},
-	id7: {"name": "name7", "content": "content7", "value": "value7"},
-	id8: {"name": "name8", "content": "content8", "value": "value8"},
-	id9: {"name": "name9", "content": "content9", "value": "value9"},
-	id10: {"name": "name10", "content": "content10", "value": "value10"},
-	id11: {"name": "name11", "content": "content11", "value": "value11"},
-	id12: {"name": "name12", "content": "content12", "value": "value12"}
+	id0: ["name0", "content0", "value1"],
+	id1: ["name1", "content1", "value1"],
+	id2: ["name2", "content2", "value2"],
+	id3: ["name3", "content3", "value3"],
+	id4: ["name4", "content4", "value4"],
+	id5: ["name5", "content5", "value5"],
+	id6: ["name6", "content6", "value6"],
+	id7: ["name7", "content7", "value7"],
+	id8: ["name8", "content8", "value8"],
+	id9: ["name9", "content9", "value9"],
+	id10: ["name10", "content10", "value10"],
+	id11: ["name11", "content11", "value11"],
+	id12: ["name12", "content12", "value12"]
 }
 
-// 将JSON数据对应的传递给表格
-var tableBody = document.getElementById("table-body");
-var tableRow = tableBody.getElementsByTagName("tr");
-for (var i = 0; i < tableRow.length; i++) {
-	var tableRowTd = tableRow[i].children;
-	tableRowTd[0].innerHTML = tableContent["id" + i].name;
-	tableRowTd[1].innerHTML = tableContent["id" + i].content;
-	tableRowTd[2].innerHTML = tableContent["id" + i].value;
+// 生成表格
+var number = 0;
+var tableBody = document.getElementById("tableBody");
+for (num in tableContent) {
+	number++;
 }
+for (var i = 0; i < number; i++) {
+	// 生成tr
+	var elementTr = document.createElement("tr");
+	for (var j = 0; j < tableContent["id" + i].length; j++) {
+		var elementTd = document.createElement("td")
+		elementTd.innerHTML = tableContent["id" + i][j]
+		elementTr.appendChild(elementTd);
+	}
+	var buttonTd = document.createElement("td");
+	buttonTd.innerHTML = "<button class='edit'>编辑</button><button class='del'>删除</button>";
+	buttonTd.setAttribute("id", "id" + i);
+    elementTr.appendChild(buttonTd);
+    tableBody.appendChild(elementTr);
+    console.log(tableBody);
+}
+// 点击事件监听
+tableBody.addEventListener("click", function(e) {
+	if (e.target.className == "edit") {
+		showWindow("compile");
+	}
+	else if (e.target.className == "del") {
+		showWindow("del");
+	}
+})
+
 
 /**
 *编辑弹窗中输入的数据
@@ -46,9 +68,9 @@ function confirmButton() {
     for (idNum in tableContent){
 	    while (inputName.value && rowId == idNum){
 	    	//JSON记录输入的数据
-	       tableContent[idNum].name = inputName.value;
-	       tableContent[idNum].content = inputContent.value;
-	       tableContent[idNum].value = inputValue.value;
+	       tableContent[idNum][0] = inputName.value;
+	       tableContent[idNum][1] = inputContent.value;
+	       tableContent[idNum][2] = inputValue.value;
            // 更新表格数据
 	       var whichRowTd = whichRow.children;
 	       whichRowTd[0].innerHTML = inputName.value;
